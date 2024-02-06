@@ -25,6 +25,21 @@ function App() {
     setValorInicial(respuesta)
     setOperadorPresionado(true)
   }
+  const respuestaCalculo = () => {
+    console.log(operador)
+    let resultado
+    if (operador === "+") {
+      resultado = Number(valorInicial) + Number(respuesta)
+    } else if (operador === "-") {
+      resultado = Number(valorInicial) - Number(respuesta)
+    } else if (operador === "x") {
+      resultado = Number(valorInicial) * Number(respuesta)
+    } else if (operador === "/") {
+      resultado = Number(valorInicial) / Number(respuesta)
+    }
+
+    setRespuesta(resultado)
+  }
 
   return (
     <>
@@ -54,7 +69,7 @@ function App() {
           <div className="flex justify-center mt-2 gap-4">
             <button onClick={() => limpiarRespuesta()} className="rounded-sm bg-white w-10">C</button>
             <button onClick={() => actualizarNumero(0)} className="rounded-sm bg-white w-10">0</button>
-            <button onClick={() => actualizarNumero(7)} className="rounded-sm bg-white w-10">=</button>
+            <button onClick={() => respuestaCalculo()} className="rounded-sm bg-white w-10">=</button>
             <button onClick={() => capturaOperacion("/")} className="rounded-sm bg-white w-10">/</button>
           </div>
         </div>

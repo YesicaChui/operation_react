@@ -3,7 +3,14 @@ import { useState } from "react"
 function App() {
   const [respuesta, setRespuesta] = useState("0")
   const actualizarNumero = (valor) => {
-    setRespuesta(valor)
+    if(respuesta === "0"){
+      setRespuesta(valor.toString())
+    }else{
+      setRespuesta(respuesta+valor)
+    }
+  }
+  const limpiarRespuesta= ()=>{
+    setRespuesta("0")
   }
 
 
@@ -33,7 +40,7 @@ function App() {
             <button onClick={()=>actualizarNumero(7)} className="rounded-sm bg-white w-10" >x</button>
           </div>
           <div className="flex justify-center mt-2 gap-4">
-            <button onClick={()=>actualizarNumero(7)} className="rounded-sm bg-white w-10">C</button>
+            <button onClick={()=>limpiarRespuesta()} className="rounded-sm bg-white w-10">C</button>
             <button onClick={()=>actualizarNumero(0)} className="rounded-sm bg-white w-10">0</button>
             <button onClick={()=>actualizarNumero(7)} className="rounded-sm bg-white w-10">=</button>
             <button onClick={()=>actualizarNumero(7)} className="rounded-sm bg-white w-10">/</button>
